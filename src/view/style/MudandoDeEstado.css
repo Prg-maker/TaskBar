@@ -1,0 +1,14 @@
+.highligth{
+    background-color: #ff8b062d;
+}
+
+.cards .tasks{
+    transition: 400ms;
+}
+.is-dragging{
+    cursor: move;
+    opacity: 0.3;
+}
+.over{
+    background-color: #4cd1674d;
+}
