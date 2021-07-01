@@ -7,9 +7,59 @@ let cards = document.querySelector('.cards')
 const overvlow = document.querySelector('.total_overvlow')
 
 
+let tasks = JSON.parse (localStorage.getItem('taks'))|| []
+
+
+
+const  saveTask = ()=>{
+
+    
+    let taskAll = document.querySelector('.tasks')
+    tasks.push(taskAll)
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+
+   
+}
+const createElement = async () =>{
+
+    let save = await localStorage.getItem('tasks')
+    let saveString = JSON.stringify(save)
+        
+
+
+
+    let div = document.createElement('div')
+    let p = document.createElement('p')
+    let textArea = document.createElement('div')
+
+
+    div.classList.add('tasks') 
+    
+    p.innerHTML = save.text
+
+    
+    div.append(p)
+    div.append(textArea)
+    cards.appendChild(div)
+
+}
+
+const reloadPage =() =>{
+    createElement()
+}
+
+
+
+
+
+
+
 input_color.addEventListener('mouseleave' , ()=>{
     color.style.background = input_color.value
 })
+
+
+
 
 button_Add.addEventListener('click', e =>{
     e.preventDefault()
@@ -55,7 +105,13 @@ button_Add.addEventListener('click', e =>{
 
 
     total_overvlow.classList.remove('active')
-    
+
+
+  
+
+
+
+
     let task = document.querySelectorAll('.tasks')
     let Array = [...task]
     Array.map(arrayTask =>{
@@ -133,6 +189,16 @@ button_Add.addEventListener('click', e =>{
 
     }
 
+    saveTask()
+
+    
     
 })
+
+
+
+
+window.addEventListener('load' , reloadPage )
+
+
 
