@@ -14,19 +14,17 @@ let tasks = JSON.parse (localStorage.getItem('taks'))|| []
 const  saveTask = ()=>{
 
     
-    let taskAll = document.querySelector('.tasks')
+    let taskAll = {title: input_text.value , text: textArea.value}
     tasks.push(taskAll)
     localStorage.setItem('tasks', JSON.stringify(tasks))
-
+    return tasks
    
 }
 const createElement = async () =>{
+    let save = localStorage.getItem('tasks')
+   
 
-    let save = await localStorage.getItem('tasks')
-    let saveString = JSON.stringify(save)
-        
-
-
+    console.log()
 
     let div = document.createElement('div')
     let p = document.createElement('p')
@@ -35,12 +33,9 @@ const createElement = async () =>{
 
     div.classList.add('tasks') 
     
-    p.innerHTML = save.text
-
     
     div.append(p)
     div.append(textArea)
-    cards.appendChild(div)
 
 }
 
@@ -79,7 +74,6 @@ button_Add.addEventListener('click', e =>{
 
     div_remove.classList.add('div-remove')
 
-    remove.classList.add('remove')
    
 
 
@@ -90,6 +84,7 @@ button_Add.addEventListener('click', e =>{
     div.classList.add('tasks') 
     p.innerText = textArea.value
     h4.innerText = input_text.value
+    remove.classList.add('remove')
 
 
     div_remove.appendChild(remove)
